@@ -1,16 +1,10 @@
 package class1;
 
-import util.ArrUtil;
-
 import java.util.Arrays;
 
-/**
- * @program: dataStructure
- * @description: 冒泡排序
- * @author: maple
- * @create: 2020-04-24 18:03
- **/
-public class BubbleSort {
+import util.ArrUtil;
+
+public class InsertSort {
     public static void main(String[] args) {
         int testTime = 1000;
         int maxSize = 100;
@@ -20,8 +14,8 @@ public class BubbleSort {
             int[] arr = ArrUtil.generateRandomArray(maxSize, maxValue);
             int[] arr2 = arr.clone();
 //            System.out.println(Arrays.toString(arr));
-            bubbleSort(arr);
-            SelectorSort.selectorSort(arr2);
+            insertSort(arr);
+            Arrays.sort(arr2);
             if (!ArrUtil.isEqual(arr, arr2)){
                 isSuccess = false;
                 System.out.println("fuck!");
@@ -34,15 +28,31 @@ public class BubbleSort {
         }
     }
 
-    static int[] bubbleSort(int[] arr){
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 1; j < arr.length - i; j++) {
-                if (arr[j-1] > arr[j]){
-                    ArrUtil.swap(arr, j-1, j);
+    public static int[] insertSort(int[] arr){
+        if(arr.length <=1) return arr;
+        for (int i = 1; i < arr.length; i++) {
+            if(arr[i] < arr[i-1]){
+                for (int j = i - 1; j >=0 && arr[j] > arr[j+1] ; j--) {
+                    ArrUtil.swap(arr, j, j+1);
                 }
             }
         }
         return arr;
     }
 
+    // public static void insertionSort(int[] arr) {
+	// 	if (arr == null || arr.length < 2) {
+	// 		return;
+	// 	}
+	// 	// 0~0 有序的
+	// 	// 0~i 想有序
+	// 	for (int i = 1; i < arr.length; i++) { // 0 ~ i 做到有序
+			
+	// 		// arr[i]往前看，一直交换到合适的位置停止
+	// 		// ...(<=)  ?       <- i
+	// 		for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
+	// 			swap(arr, j, j + 1);
+	// 		}
+	// 	}
+	// }
 }
