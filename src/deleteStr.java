@@ -24,7 +24,7 @@ public class deleteStr {
     }
 
     public static void main(String[] args) {
-        char[] input = new char[]{'a', 'a', 'a', 'c', 'b'};
+        char[] input = new char[]{'\0', 'a', 'a', 'c', '\0', 'b'};
         getResult(input);
         for (int i = 0; i < input.length; i++) {
             if (input[i] != '\0'){

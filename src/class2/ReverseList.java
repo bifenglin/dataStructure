@@ -29,7 +29,6 @@ public class ReverseList {
         }
     }
 
-
     public static Node reverseLinkedList(Node head){
         Node pre = null;
         Node cur = head;
