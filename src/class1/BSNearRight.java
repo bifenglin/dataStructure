@@ -43,6 +43,11 @@ public class BSNearRight {
         }
         return -1;
     }
+//    public static int bnNearRight(int[] arr, int target){
+//        int left = 0;
+//        int right = arr.length - 1;
+//
+//    }
 
 
     public static int bSnearRight(int[] arr, int target){

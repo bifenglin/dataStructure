@@ -14,11 +14,11 @@ public class BSNearLeft {
 			int[] arr = ArrUtil.generateRandomArray(maxSize, maxValue);
 			Arrays.sort(arr);
 			int value = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
-			if (test(arr, value) != bSNearLeft(arr, value)) {
+			if (test(arr, value) != bsNearLeft(arr, value)) {
 				Arrays.toString(arr);
 				System.out.println(value);
 				System.out.println(test(arr, value));
-				System.out.println(bSNearLeft(arr, value));
+				System.out.println(bsNearLeft(arr, value));
 				succeed = false;
 				break;
 			}
@@ -34,6 +34,25 @@ public class BSNearLeft {
 			}
 		}
 		return -1;
+	}
+
+	public static int bsNearLeft(int[] arr, int target) {
+		int left = 0, right = arr.length - 1;
+		while (left <= right) {
+			int mid = left + ((right - left) >> 1);
+			if (arr[mid] < target) {
+				left = mid + 1;
+			} else if (arr[mid] > target) {
+				right = mid - 1;
+			} else if (arr[mid] == target) {
+				// 别返回，锁定左侧边界
+				right = mid - 1;
+			}
+		}
+//		// 最后要检查 left 越界的情况
+//		if (left >= arr.length || arr[left] != target)
+//			return -1;
+		return left;
 	}
 
     public static int bSNearLeft(int[] arr, int target){
